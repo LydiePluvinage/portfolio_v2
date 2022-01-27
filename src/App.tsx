@@ -1,12 +1,11 @@
 import './App.css';
 
 import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import { CSSTransition } from 'react-transition-group';
 
 import Avatar from './components/Avatar';
 import NavBar from './components/NavBar';
-
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import menuList from './menu';
 
 function App() {
@@ -21,13 +20,13 @@ function App() {
             <NavBar />
           </div>
           <div className="w-full h-full col-span-2 col-start-2 row-span-3 row-start-1 border-2 border-white rounded-3xl">
-            <CSSTransition classNames="transition ease-in duration-500" timeout={300}>
-              <Routes>
-                {menuList.map(({ path, Component }, index) => (
-                  <Route path={path} key={index} element={<Component />} />
-                ))}
-              </Routes>
-            </CSSTransition>
+            {/* <CSSTransition classNames="transition ease-in duration-500" timeout={300}> */}
+            <Routes>
+              {menuList.map(({ path, Component }, index) => (
+                <Route path={path} key={index} element={<Component />} />
+              ))}
+            </Routes>
+            {/* </CSSTransition> */}
           </div>
         </BrowserRouter>
       </div>
