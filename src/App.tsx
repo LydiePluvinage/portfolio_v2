@@ -1,10 +1,12 @@
 import './App.css';
 
 import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import { CSSTransition } from 'react-transition-group';
 
-import AboutMe from './components/AboutMe';
 import Avatar from './components/Avatar';
 import NavBar from './components/NavBar';
+import menuList from './menu';
 
 function App() {
   return (
@@ -13,12 +15,20 @@ function App() {
         <div className="w-full h-full row-start-1 border-2 border-white rounded-full">
           <Avatar />
         </div>
-        <div className="w-full h-full row-span-2 row-start-2 border-2 border-white rounded-3xl">
-          <NavBar />
-        </div>
-        <div className="w-full h-full col-span-2 col-start-2 row-span-3 row-start-1 border-2 border-white rounded-3xl">
-          <AboutMe title="Let's talk tech" content="Js, React, Node" />
-        </div>
+        <BrowserRouter>
+          <div className="w-full h-full row-span-2 row-start-2 border-2 border-white rounded-3xl">
+            <NavBar />
+          </div>
+          <div className="w-full h-full col-span-2 col-start-2 row-span-3 row-start-1 border-2 border-white rounded-3xl">
+            {/* <CSSTransition classNames="transition ease-in duration-500" timeout={300}> */}
+            <Routes>
+              {menuList.map(({ path, Component }, index) => (
+                <Route path={path} key={index} element={<Component />} />
+              ))}
+            </Routes>
+            {/* </CSSTransition> */}
+          </div>
+        </BrowserRouter>
       </div>
     </div>
   );
