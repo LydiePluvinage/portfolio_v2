@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Logo from './Logo';
 
 const techList = [
@@ -27,8 +28,8 @@ const MyTechs = () => {
       <ul className="flex flex-wrap justify-center">
         {techList
           .filter((tech) => tech.known)
-          .map((tech) => (
-            <li>
+          .map((tech, index) => (
+            <li key={index}>
               <Logo style="w-16 h-16 m-7" name={tech.name} icon={tech.icon} />
             </li>
           ))}
@@ -37,8 +38,8 @@ const MyTechs = () => {
       <ul className="flex flex-wrap justify-center">
         {techList
           .filter((tech) => !tech.known)
-          .map((tech) => (
-            <li>
+          .map((tech, index) => (
+            <li key={index}>
               <Logo style="w-16 h-16 m-7" name={tech.name} icon={tech.icon} />
             </li>
           ))}

@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+
 import Icons from '../../resources/logos.svg';
 
 interface Props {
@@ -10,9 +11,12 @@ interface Props {
 
 const Logo: FC<Props> = ({ name, icon, color, style }) => {
   return (
-    <svg className={style} fill={color}>
-      <use xlinkHref={`${Icons}#${icon}`}></use>
-    </svg>
+    <>
+      <svg className={style} fill={color}>
+        <use xlinkHref={`${Icons}#${icon}`}></use>
+        {/* {name} */}
+      </svg>
+    </>
   );
 };
 
